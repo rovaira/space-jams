@@ -12,7 +12,7 @@ class Album
   def duration_min
     track_min = 0.00
     tracks.each do |track|
-      track_min = ms_conversion(track.duration_ms.to_f)
+      track_min = millisecond_conversion(track.duration_ms.to_f)
     end
     track_min.round(2)
   end
@@ -33,7 +33,7 @@ Tracks: #{track_name}}
     all_tracks
   end
 
-  def ms_conversion(ms)
+  def millisecond_conversion(ms)
     ms / 60000
   end
 
