@@ -1,5 +1,3 @@
-require "pry"
-
 class Album
 
   attr_reader :id, :title, :artists, :tracks
@@ -13,8 +11,8 @@ class Album
 
   def duration_min
     track_min = 0.00
-    tracks.each do |hash|
-      track_min = ms_conversion(hash[:duration_ms].to_f)
+    tracks.each do |track|
+      track_min = ms_conversion(track.duration_ms.to_f)
     end
     track_min.round(2)
   end
@@ -24,14 +22,13 @@ class Album
 Name: #{title}
 Artist(s): #{artists}
 Duration: #{duration_min} minutes
-Tracks: #{track_name}
-    }
+Tracks: #{track_name}}
   end
 
   def track_name
     all_tracks = ""
-    tracks.each do |hash|
-      all_tracks << "\n- " << hash[:title] << "\n"
+    tracks.each do |track|
+      all_tracks << "\n- " << track.title << "\n"
     end
     all_tracks
   end

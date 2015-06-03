@@ -1,7 +1,7 @@
-require 'pry'
 require 'csv'
 
-require_relative 'album'
+require_relative 'lib/album.rb'
+require_relative 'lib/track.rb'
 
 albums = []
 
@@ -15,7 +15,13 @@ CSV.foreach('space_jams.csv', headers: true, header_converters: :symbol) do |row
 
   end
 
-  album.tracks << track
+  album.tracks << Track.new(
+    track[:album_id],
+    track[:track_id],
+    track[:title],
+    track[:track_number],
+    track[:duration_ms]
+  )
 
 end
 
